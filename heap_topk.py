@@ -53,10 +53,12 @@ def topk(li: List, k: int) -> None:
         topk问题
             时间复杂度:O(mlogn)
     """
+    # 获取前k个元素，构造一个小根堆
     heap = li[0:k]
     for i in range((k-2) // 2, -1, -1):
         sift(heap, i, k-1)
-
+    
+    # 遍历剩下的元素，和堆顶元素比较大小
     for i in range(k, len(li)):
         if li[i] > heap[0]:
             heap[0] = li[i]
